@@ -1,0 +1,24 @@
+.popup__image-container {
+  background-color: transparent;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .popup__container {
+    width: 430px;
+    padding: 34px 36px 37px;
+  }
+}
+
+.popup__image-title {
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+}

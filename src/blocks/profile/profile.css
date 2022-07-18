@@ -1,0 +1,31 @@
+.profile {
+  width: 100%;
+  margin: 0 0 36px;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: start;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: min-content 26px 28px;
+  grid-template-areas:
+            ". avatar ."
+            ". header button"
+            ". job .";
+}
+
+@media screen and (min-width: 768px) {
+  .profile {
+    flex-direction: row;
+    width: calc(100% - 150px);
+    grid-template-columns: 120px max-content min-content;
+    grid-template-rows: 1fr 39px 34px 1fr;
+    grid-template-areas:
+            "avatar . ."
+            "avatar header button"
+            "avatar job job"
+            "avatar . .";
+    justify-items: start;
+    justify-content: start;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,26 @@
+.profile__about {
+  color: hsla(0, 0%, 100%, 1);
+  font-family: Inter, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0;
+  margin: 14px 0 0;
+  grid-area: job;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  max-width: calc(100vw - (2 * 19px) - 28px);
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__about {
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 30px;
+    margin-top: 16px;
+    max-width: calc(580px - 120px - 30px - 24px - 18px * 2);
+  }
+}

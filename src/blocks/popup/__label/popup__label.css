@@ -1,0 +1,10 @@
+.popup__label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.popup__label:first-child {
+  margin-top: 0;
+}

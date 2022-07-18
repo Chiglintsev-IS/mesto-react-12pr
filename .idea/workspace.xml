@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="239a10d2-5ae8-4d5b-9f5e-a08e88b5bf08" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.old.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/add-gallery-elem-button/add-gallery-elem-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/content-header/content-header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/content/content.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/footer/__copyright/footer__copyright.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/footer/footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-card/__caption/gallery-card__caption.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-card/__delete/gallery-card__delete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-card/__image/gallery-card__image.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-card/__like-button/gallery-card__like-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-card/__likes-quantity/gallery-card__likes-quantity.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-card/__name/gallery-card__name.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-card/gallery-card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery-container/gallery-container.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery/__item/gallery__item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/gallery/gallery.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/header/__logo/header__logo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/header/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/page/page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/page/page_preload.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__close-button/popup__close-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__container/popup__container.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__form/popup__form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__header/popup__header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__image-container/popup__image-container.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__image/popup__image.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__input-error/_visible/popup__input-error_visible.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__input-error/popup__input-error.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__input/_invalid/popup__input_invalid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__input/popup__input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__label/popup__label.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__submit-button/popup__submit-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/_visible/popup_visible.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__about/profile__about.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__avatar-image/profile__avatar-image.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__avatar/profile__avatar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__edit-button/profile__edit-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__name/profile__name.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/profile/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/add-gallery-elem-button.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/avatar.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/changeProfileAvatar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/edit-profile-button.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/gallery-card/delete-card.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/gallery-card/like_empty.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/gallery-card/like_fill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/popup/close-Icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reportWebVitals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vendor/font-inter/Inter-Black.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vendor/font-inter/Inter-Medium.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vendor/font-inter/Inter-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vendor/font-inter/inter.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vendor/normalize.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2C7vbqdx6Garz16FpBnWy4XLRb0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Markdown" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="239a10d2-5ae8-4d5b-9f5e-a08e88b5bf08" name="Changes" comment="" />
+      <created>1658166518297</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658166518297</updated>
+      <workItem from="1658166521665" duration="1756000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

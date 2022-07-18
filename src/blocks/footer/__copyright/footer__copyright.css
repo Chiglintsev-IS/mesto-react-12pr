@@ -1,0 +1,17 @@
+.footer__copyright {
+  color: hsla(0, 0%, 33%, 1);
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+ .footer__copyright{
+   font-size: 18px;
+   line-height: 22px;
+ }
+}

@@ -1,0 +1,13 @@
+.gallery-card__like-button {
+  display: block;
+  border: none;
+  cursor: pointer;
+  background: url('../../../images/gallery-card/like_empty.svg') center center no-repeat;
+  background-size: 22px 19px;
+  width: 22px;
+  height: 19px;
+}
+
+.gallery-card__like-button_fill {
+  background: url('../../../images/gallery-card/like_fill.svg') center center no-repeat;
+}
