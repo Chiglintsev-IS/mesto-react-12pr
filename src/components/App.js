@@ -9,6 +9,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState(null);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -22,17 +23,22 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  }
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setSelectedCard(null);
   }
 
   return (
     <div className="App">
       <div className="page">
         <Header />
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick}/>
+        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onOpenImage={handleCardClick} />
         <Footer />
 
         <PopupWithForm name={'edit-profile'}
@@ -124,24 +130,13 @@ function App() {
         <PopupWithForm name={'delete-card'}
                        title={'Вы уверены?'}
                        children={null}
-                       onClose = {closeAllPopups}
+                       onClose={closeAllPopups}
         />
 
-        <ImagePopup />
-
-        <template id="gallery-card">
-          <li className="gallery-card">
-            <button className="gallery-card__delete" type="button"></button>
-            <img src="#" alt="" className="gallery-card__image"/>
-            <div className="gallery-card__caption">
-              <h2 className="gallery-card__name"></h2>
-              <div>
-                <button className="gallery-card__like-button" type="button"></button>
-                <p className="gallery-card__likes-quantity">0</p>
-              </div>
-            </div>
-          </li>
-        </template>
+        <ImagePopup
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
       </div>
     </div>
   );
