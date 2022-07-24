@@ -1,5 +1,3 @@
-// export const api2 = 123;
-
 class Api {
     constructor({url}) {
         this._token = 'a3323811-4478-45ff-8d19-aca6eb14fb77';
