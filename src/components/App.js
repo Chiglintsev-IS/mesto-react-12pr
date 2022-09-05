@@ -1,15 +1,23 @@
-import {useState} from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import PopupWithForm from './PopupWithForm';
+import api from '../utils/Api.js';
+import React from 'react';
+import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
 
 function App() {
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState(null);
+  const [currentUser, setCurrentUser] = React.useState({});
+
+  React.useEffect(() => {
+    api.getUserInfo()
+      .then((userInfo) => setCurrentUser({...userInfo}));
+  }, []);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -38,8 +46,10 @@ function App() {
     <div className="App">
       <div className="page">
         <Header/>
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
-              onEditAvatar={handleEditAvatarClick} onOpenImage={handleCardClick}/>
+        <CurrentUserContext.Provider value={currentUser}>
+          <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditAvatarClick} onOpenImage={handleCardClick}/>
+        </CurrentUserContext.Provider>
         <Footer/>
 
         <PopupWithForm name={'delete-card'}
@@ -63,7 +73,7 @@ function App() {
                    className="popup__input popup__input_profile_avatar"
                    placeholder="Ссылка на аватар"
                    required/>
-            <span id="avatar-url-error" className="popup__input-error"></span>
+            <span id="avatar-url-error" className="popup__input-error"/>
           </label>
         </PopupWithForm>
 
@@ -82,7 +92,7 @@ function App() {
                    minLength="2"
                    maxLength="40"
                    required/>
-            <span id="name-error" className="popup__input-error"></span>
+            <span id="name-error" className="popup__input-error"/>
           </label>
           <label className="popup__label">
             <input id="about"
@@ -93,7 +103,7 @@ function App() {
                    minLength="2"
                    maxLength="200"
                    required/>
-            <span id="about-error" className="popup__input-error"></span>
+            <span id="about-error" className="popup__input-error"/>
           </label>
         </PopupWithForm>
 
@@ -110,7 +120,7 @@ function App() {
                    className="popup__input popup__input_profile_avatar"
                    placeholder="Ссылка на аватар"
                    required/>
-            <span id="avatar-url-error" className="popup__input-error"></span>
+            <span id="avatar-url-error" className="popup__input-error"/>
           </label>
         </PopupWithForm>
 
@@ -129,7 +139,7 @@ function App() {
                    minLength="2"
                    maxLength="30"
                    required/>
-            <span id="place-error" className="popup__input-error"></span>
+            <span id="place-error" className="popup__input-error"/>
           </label>
           <label className="popup__label">
             <input id="link"
@@ -138,7 +148,7 @@ function App() {
                    className="popup__input popup__input_card_link"
                    placeholder="Ссылка на изображение места"
                    required/>
-            <span id="link-error" className="popup__input-error"></span>
+            <span id="link-error" className="popup__input-error"/>
           </label>
         </PopupWithForm>
 
