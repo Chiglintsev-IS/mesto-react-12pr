@@ -15,29 +15,15 @@ function Main({onOpenImage, onEditAvatar, onEditProfile, onAddPlace}) {
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-    if (!isLiked) {
-      api.setLike({cardId: card._id})
-        .then((updatedCard) => {
-          const updatedCards = cards.map((card) => {
-            return card._id === updatedCard._id
-              ? updatedCard
-              : card
-          });
-          setCards(updatedCards);
+    api.handleCardLike({cardId: card._id, isLike: !isLiked})
+      .then((updatedCard) => {
+        const updatedCards = cards.map((card) => {
+          return card._id === updatedCard._id
+            ? updatedCard
+            : card
         });
-    }
-
-    if (isLiked) {
-      api.removeLike({cardId: card._id})
-        .then((updatedCard) => {
-          const updatedCards = cards.map((card) => {
-            return card._id === updatedCard._id
-              ? updatedCard
-              : card
-          });
-          setCards(updatedCards);
-        });
-    }
+        setCards(updatedCards);
+      });
   }
 
   function handleCardDelete(card) {
