@@ -13,7 +13,7 @@ function Main({onOpenImage, onEditAvatar, onEditProfile, onAddPlace}) {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(liker => liker._id === currentUser._id);
 
     api.handleCardLike({cardId: card._id, isLike: !isLiked})
       .then((updatedCard) => {
@@ -28,7 +28,10 @@ function Main({onOpenImage, onEditAvatar, onEditProfile, onAddPlace}) {
 
   function handleCardDelete(card) {
     api.deleteCard({cardId: card._id})
-      .then(resp => console.log(resp))
+      .then(() => {
+        const updatedCards = cards.filter(i => i._id !== card._id);
+        setCards(updatedCards);
+      });
   }
 
   React.useEffect(() => {
