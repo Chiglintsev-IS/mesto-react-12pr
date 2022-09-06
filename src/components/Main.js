@@ -15,27 +15,34 @@ function Main({onOpenImage, onEditAvatar, onEditProfile, onAddPlace}) {
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-    if (isLiked) {
+    if (!isLiked) {
       api.setLike({cardId: card._id})
-        .then((likedCard) => {
-          cards.map((card) => {
-            return card._id === likedCard._id
-              ? likedCard
+        .then((updatedCard) => {
+          const updatedCards = cards.map((card) => {
+            return card._id === updatedCard._id
+              ? updatedCard
               : card
-          })
-        })
+          });
+          setCards(updatedCards);
+        });
     }
 
-    if (!isLiked) {
+    if (isLiked) {
       api.removeLike({cardId: card._id})
-        .then((unLikedCard) => {
-          cards.map((card) => {
-            return card._id === unLikedCard._id
-              ? unLikedCard
+        .then((updatedCard) => {
+          const updatedCards = cards.map((card) => {
+            return card._id === updatedCard._id
+              ? updatedCard
               : card
-          })
-        })
+          });
+          setCards(updatedCards);
+        });
     }
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard({cardId: card._id})
+      .then(resp => console.log(resp))
   }
 
   React.useEffect(() => {
@@ -66,6 +73,7 @@ function Main({onOpenImage, onEditAvatar, onEditProfile, onAddPlace}) {
                   card={card}
                   onCardClick={handleCardClick}
                   onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
             />
           ))}
         </ul>
