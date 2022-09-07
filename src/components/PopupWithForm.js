@@ -2,7 +2,7 @@ function PopupWithForm({name, title, isOpen, onClose, buttonText, children}) {
   return (
     <div className={`popup popup_type_${name} ${isOpen && 'popup_visible'}`}>
       <div className="popup__container">
-        <button className="popup__close-button" type="button" onClick={onClose}></button>
+        <button className="popup__close-button" type="button" onClick={onClose}/>
         <h3 className="popup__header">{title}</h3>
         <form className="popup__form" name={name}>
           {children}

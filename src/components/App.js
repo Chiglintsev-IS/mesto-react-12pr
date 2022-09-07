@@ -3,6 +3,7 @@ import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import PopupWithForm from './PopupWithForm';
+import EditProfilePopup from './EditProfilePopup';
 import api from '../utils/Api.js';
 import React from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
@@ -77,35 +78,7 @@ function App() {
           </label>
         </PopupWithForm>
 
-        <PopupWithForm name={'edit-profile'}
-                       title={'Редактировать профиль'}
-                       isOpen={isEditProfilePopupOpen}
-                       onClose={closeAllPopups}
-                       buttonText={'Сохранить'}
-        >
-          <label className="popup__label">
-            <input id="name"
-                   type="text"
-                   name="name"
-                   className="popup__input popup__input_profile_name"
-                   placeholder="Имя"
-                   minLength="2"
-                   maxLength="40"
-                   required/>
-            <span id="name-error" className="popup__input-error"/>
-          </label>
-          <label className="popup__label">
-            <input id="about"
-                   type="text"
-                   name="about"
-                   className="popup__input popup__input_profile_job"
-                   placeholder="Профессия"
-                   minLength="2"
-                   maxLength="200"
-                   required/>
-            <span id="about-error" className="popup__input-error"/>
-          </label>
-        </PopupWithForm>
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/>
 
         <PopupWithForm name={'edit-profile-avatar'}
                        title={'Обновить аватар'}
