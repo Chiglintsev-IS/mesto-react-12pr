@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="239a10d2-5ae8-4d5b-9f5e-a08e88b5bf08" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/EditProfilePopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditProfilePopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditProfilePopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +87,8 @@
       <workItem from="1658586904041" duration="16355000" />
       <workItem from="1658641861471" duration="3421000" />
       <workItem from="1658665140990" duration="1682000" />
-      <workItem from="1662397297825" duration="17976000" />
+      <workItem from="1662397297825" duration="18067000" />
+      <workItem from="1662564859474" duration="1577000" />
     </task>
     <servers />
   </component>
