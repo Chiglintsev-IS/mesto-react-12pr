@@ -14,14 +14,6 @@ function Main({
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  // мне нужно ререндерить после обновления cards
-  // кажется сделал фигню, посоветуйте пожалуйста
-  React.useEffect(() => {},[cards])
-
-  function handleCardClick(card) {
-    onOpenImage(card);
-  }
-
   return (<main className="content">
     <div className="content-header">
       <section className="profile">
@@ -36,12 +28,15 @@ function Main({
     </div>
     <section className="gallery-container">
       <ul className="gallery">
-        {cards.map((card) => (<Card key={card._id}
-                                    card={card}
-                                    onCardClick={handleCardClick}
-                                    onCardLike={onCardLike}
-                                    onCardDelete={onCardDelete}
-        />))}
+        {cards.map((card) => (
+          <Card
+            key={card._id}
+            card={card}
+            onCardClick={onOpenImage}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
+          />
+        ))}
       </ul>
     </section>
   </main>);

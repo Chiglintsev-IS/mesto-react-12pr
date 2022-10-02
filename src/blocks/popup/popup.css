@@ -13,3 +13,7 @@
   opacity: 0;
   transition: visibility .4s, opacity .4s ease-in-out;
 }
+
+.popup_image {
+  background-color: hsla(0, 0%, 0%, .9);
+}
