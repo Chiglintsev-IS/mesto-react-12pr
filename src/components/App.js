@@ -9,6 +9,8 @@ import AddPlacePopup from './AddPlacePopup';
 import api from '../utils/Api.js';
 import React from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
+import {Navigate} from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -17,6 +19,7 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
+  const [isAuth, setAuth] = React.useState(false);
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -100,52 +103,60 @@ function App() {
       .catch(e => console.error(e));
   }
 
-  return (<div className="App">
-    <div className="page">
-      <Header/>
-      <CurrentUserContext.Provider value={currentUser}>
-        <Main
-          onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
-          onEditAvatar={handleEditAvatarClick}
-          onOpenImage={handleCardClick}
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-        />
-        <EditProfilePopup
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-        />
-      </CurrentUserContext.Provider>
-      <Footer/>
+  if (!isAuth) {
+    return <Navigate to="/sign-in" replace/>;
+  }
 
-      <EditAvatarPopup
-        isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-        onUpdateAvatar={handleUpdateAvatar}
-      />
-      <AddPlacePopup
-        isOpen={isAddPlacePopupOpen}
-        onClose={closeAllPopups}
-        onAddPlace={handleAddPlace}
-      />
+  return (
+    <ProtectedRoute user={isAuth}>
+      <div className="App">
+        <div className="page">
+          <Header/>
+          <CurrentUserContext.Provider value={currentUser}>
+            <Main
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onEditAvatar={handleEditAvatarClick}
+              onOpenImage={handleCardClick}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+            />
+            <EditProfilePopup
+              isOpen={isEditProfilePopupOpen}
+              onClose={closeAllPopups}
+              onUpdateUser={handleUpdateUser}
+            />
+          </CurrentUserContext.Provider>
+          <Footer/>
 
-      <PopupWithForm
-        name={'delete-card'}
-        title={'Вы уверены?'}
-        onClose={closeAllPopups}
-        buttonText={'Да'}
-        isOpen={false}
-      />
+          <EditAvatarPopup
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}
+          />
+          <AddPlacePopup
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
+            onAddPlace={handleAddPlace}
+          />
 
-      <ImagePopup
-        card={selectedCard}
-        onClose={closeAllPopups}
-      />
-    </div>
-  </div>);
+          <PopupWithForm
+            name={'delete-card'}
+            title={'Вы уверены?'}
+            onClose={closeAllPopups}
+            buttonText={'Да'}
+            isOpen={false}
+          />
+
+          <ImagePopup
+            card={selectedCard}
+            onClose={closeAllPopups}
+          />
+        </div>
+      </div>
+    </ProtectedRoute>
+  );
 }
 
 export default App;
