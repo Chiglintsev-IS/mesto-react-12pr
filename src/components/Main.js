@@ -11,35 +11,36 @@ function Main({
                 onEditProfile,
                 onAddPlace
               }) {
-
   const currentUser = React.useContext(CurrentUserContext);
 
-  return (<main className="content">
-    <div className="content-header">
-      <section className="profile">
-        <div className="profile__avatar" onClick={onEditAvatar}>
-          <img src={currentUser.avatar} alt="аватарка автора блога" className="profile__avatar-image"/>
-        </div>
-        <h1 className="profile__name">{currentUser.name}</h1>
-        <p className="profile__about">{currentUser.about}</p>
-        <button className="profile__edit-button" type="button" onClick={onEditProfile}/>
+  return (
+    <main className="content">
+      <div className="content-header">
+        <section className="profile">
+          <div className="profile__avatar" onClick={onEditAvatar}>
+            <img src={currentUser.avatar} alt="аватарка автора блога" className="profile__avatar-image"/>
+          </div>
+          <h1 className="profile__name">{currentUser.name}</h1>
+          <p className="profile__about">{currentUser.about}</p>
+          <button className="profile__edit-button" type="button" onClick={onEditProfile}/>
+        </section>
+        <button className="add-gallery-elem-button" type="button" onClick={onAddPlace}/>
+      </div>
+      <section className="gallery-container">
+        <ul className="gallery">
+          {cards.map((card) => (
+            <Card
+              key={card._id}
+              card={card}
+              onCardClick={onOpenImage}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
+            />
+          ))}
+        </ul>
       </section>
-      <button className="add-gallery-elem-button" type="button" onClick={onAddPlace}/>
-    </div>
-    <section className="gallery-container">
-      <ul className="gallery">
-        {cards.map((card) => (
-          <Card
-            key={card._id}
-            card={card}
-            onCardClick={onOpenImage}
-            onCardLike={onCardLike}
-            onCardDelete={onCardDelete}
-          />
-        ))}
-      </ul>
-    </section>
-  </main>);
+    </main>
+  );
 }
 
 export default Main;

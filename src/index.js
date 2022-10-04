@@ -4,17 +4,14 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {
-  BrowserRouter, Route, Routes
+  BrowserRouter
 } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App/>}/>
-        <Route path="mesto-react" element={<App/>}/>
-      </Routes>
+      <App/>
     </BrowserRouter>
   </React.StrictMode>
 );

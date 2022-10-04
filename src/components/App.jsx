@@ -6,11 +6,13 @@ import PopupWithForm from './PopupWithForm';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
+import Login from './Login';
 import api from '../utils/Api.js';
 import React from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
-import {Navigate} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import Register from "./Register";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -19,7 +21,7 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
-  const [isAuth, setAuth] = React.useState(false);
+  const [isAuth, setAuth] = React.useState(true);
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -103,59 +105,60 @@ function App() {
       .catch(e => console.error(e));
   }
 
-  if (!isAuth) {
-    return <Navigate to="/sign-in" replace/>;
-  }
-
   return (
-    <ProtectedRoute user={isAuth}>
-      <div className="App">
-        <div className="page">
-          <Header/>
-          <CurrentUserContext.Provider value={currentUser}>
-            <Main
-              onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick}
-              onEditAvatar={handleEditAvatarClick}
-              onOpenImage={handleCardClick}
-              cards={cards}
-              onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
-            />
-            <EditProfilePopup
-              isOpen={isEditProfilePopupOpen}
-              onClose={closeAllPopups}
-              onUpdateUser={handleUpdateUser}
-            />
-          </CurrentUserContext.Provider>
-          <Footer/>
+    <div className="App">
+      <div className="page">
+        <CurrentUserContext.Provider value={currentUser}>
+          <Routes>
+            <Route path="/sign-up" element={<Register/>}/>
+            <Route path="/sign-in" element={<Login/>}/>
+            <Route element={<ProtectedRoute loggedIn={false}/>}>
+              <Route path="/" element={
+                <Main
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onEditAvatar={handleEditAvatarClick}
+                  onOpenImage={handleCardClick}
+                  cards={cards}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                />
+              }
+              />
+            </Route>
+          </Routes>
+          <EditProfilePopup
+            isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+          />
+        </CurrentUserContext.Provider>
 
-          <EditAvatarPopup
-            isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}
-            onUpdateAvatar={handleUpdateAvatar}
-          />
-          <AddPlacePopup
-            isOpen={isAddPlacePopupOpen}
-            onClose={closeAllPopups}
-            onAddPlace={handleAddPlace}
-          />
-
-          <PopupWithForm
-            name={'delete-card'}
-            title={'Вы уверены?'}
-            onClose={closeAllPopups}
-            buttonText={'Да'}
-            isOpen={false}
-          />
-
-          <ImagePopup
-            card={selectedCard}
-            onClose={closeAllPopups}
-          />
-        </div>
+        <Header/>
+        <Footer/>
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+        />
+        <AddPlacePopup
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          onAddPlace={handleAddPlace}
+        />
+        <PopupWithForm
+          name={'delete-card'}
+          title={'Вы уверены?'}
+          onClose={closeAllPopups}
+          buttonText={'Да'}
+          isOpen={false}
+        />
+        <ImagePopup
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
       </div>
-    </ProtectedRoute>
+    </div>
   );
 }
 
