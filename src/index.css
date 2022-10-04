@@ -39,3 +39,11 @@
 @import url('blocks/profile/__edit-button/profile__edit-button.css');
 @import url('blocks/profile/__name/profile__name.css');
 @import url('blocks/profile/__about/profile__about.css');
+@import url('blocks/header/__auth-link/header__auth-link.css');
+@import url('blocks/header/__profile-email/header__profile-email.css');
+@import url('blocks/header/__profile-menu/header__profile-menu.css');
+@import url('blocks/auth-redirect-link/auth-redirect-link.css');
+@import url('blocks/auth-form/__input/auth-form__input.css');
+@import url('blocks/auth-form/__root/auth-form__root.css');
+@import url('blocks/auth-form/__submit-button/auth-form__submit-button.css');
+@import url('blocks/auth-form/__title/auth-form__title.css');

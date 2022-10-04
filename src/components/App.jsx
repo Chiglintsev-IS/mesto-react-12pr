@@ -108,13 +108,13 @@ function App() {
   return (<div className="App">
     <div className="page">
       <Header/>
-      <CurrentUserContext.Provider value={currentUser}>
-        <Routes>
-          <Route path='/mesto-react' element={<Navigate to="/sign-in" replace/>}/>
-          <Route path="/sign-up" element={<Register/>}/>
-          <Route path="/sign-in" element={<Login/>}/>
-          <Route path='/' element={<ProtectedRoute loggedIn={true}/>}>
-            <Route index element={<>
+      <Routes>
+        <Route path='/mesto-react' element={<Navigate to="/sign-in" replace/>}/>
+        <Route path="/sign-up" element={<Register/>}/>
+        <Route path="/sign-in" element={<Login/>}/>
+        <Route path="/" element={<ProtectedRoute loggedIn={true}/>}>
+          <Route index element={<>
+            <CurrentUserContext.Provider value={currentUser}>
               <Main
                 cards={cards}
                 onEditProfile={handleEditProfileClick}
@@ -151,10 +151,10 @@ function App() {
                 card={selectedCard}
                 onClose={closeAllPopups}
               />
-            </>}/>
-          </Route>
-        </Routes>
-      </CurrentUserContext.Provider>
+            </CurrentUserContext.Provider>
+          </>}/>
+        </Route>
+      </Routes>
     </div>
   </div>);
 }

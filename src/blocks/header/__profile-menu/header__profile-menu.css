@@ -1,0 +1,7 @@
+.header__profile-menu {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
