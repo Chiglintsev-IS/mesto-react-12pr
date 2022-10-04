@@ -1,6 +1,12 @@
 function Register(props) {
   return (
-    <h1>hello register</h1>
+    <>
+      <form>
+      <h1>Регистрация</h1>
+        <input placeholder='d'/>
+        <input/>
+      </form>
+    </>
   );
 }
 

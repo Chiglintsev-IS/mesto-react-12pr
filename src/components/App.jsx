@@ -10,7 +10,7 @@ import Login from './Login';
 import api from '../utils/Api.js';
 import React from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Register from "./Register";
 
@@ -105,61 +105,58 @@ function App() {
       .catch(e => console.error(e));
   }
 
-  return (
-    <div className="App">
-      <div className="page">
-        <CurrentUserContext.Provider value={currentUser}>
-          <Routes>
-            <Route path="/sign-up" element={<Register/>}/>
-            <Route path="/sign-in" element={<Login/>}/>
-            <Route element={<ProtectedRoute loggedIn={false}/>}>
-              <Route path="/" element={
-                <Main
-                  onEditProfile={handleEditProfileClick}
-                  onAddPlace={handleAddPlaceClick}
-                  onEditAvatar={handleEditAvatarClick}
-                  onOpenImage={handleCardClick}
-                  cards={cards}
-                  onCardLike={handleCardLike}
-                  onCardDelete={handleCardDelete}
-                />
-              }
+  return (<div className="App">
+    <div className="page">
+      <Header/>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route path='/mesto-react' element={<Navigate to="/sign-in" replace/>}/>
+          <Route path="/sign-up" element={<Register/>}/>
+          <Route path="/sign-in" element={<Login/>}/>
+          <Route path='/' element={<ProtectedRoute loggedIn={true}/>}>
+            <Route index element={<>
+              <Main
+                cards={cards}
+                onEditProfile={handleEditProfileClick}
+                onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditAvatarClick}
+                onOpenImage={handleCardClick}
+                onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
               />
-            </Route>
-          </Routes>
-          <EditProfilePopup
-            isOpen={isEditProfilePopupOpen}
-            onClose={closeAllPopups}
-            onUpdateUser={handleUpdateUser}
-          />
-        </CurrentUserContext.Provider>
-
-        <Header/>
-        <Footer/>
-        <EditAvatarPopup
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateAvatar}
-        />
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          onAddPlace={handleAddPlace}
-        />
-        <PopupWithForm
-          name={'delete-card'}
-          title={'Вы уверены?'}
-          onClose={closeAllPopups}
-          buttonText={'Да'}
-          isOpen={false}
-        />
-        <ImagePopup
-          card={selectedCard}
-          onClose={closeAllPopups}
-        />
-      </div>
+              <Footer/>
+              <EditProfilePopup
+                isOpen={isEditProfilePopupOpen}
+                onClose={closeAllPopups}
+                onUpdateUser={handleUpdateUser}
+              />
+              <EditAvatarPopup
+                isOpen={isEditAvatarPopupOpen}
+                onClose={closeAllPopups}
+                onUpdateAvatar={handleUpdateAvatar}
+              />
+              <AddPlacePopup
+                isOpen={isAddPlacePopupOpen}
+                onClose={closeAllPopups}
+                onAddPlace={handleAddPlace}
+              />
+              <PopupWithForm
+                isOpen={false}
+                name={'delete-card'}
+                title={'Вы уверены?'}
+                buttonText={'Да'}
+                onClose={closeAllPopups}
+              />
+              <ImagePopup
+                card={selectedCard}
+                onClose={closeAllPopups}
+              />
+            </>}/>
+          </Route>
+        </Routes>
+      </CurrentUserContext.Provider>
     </div>
-  );
+  </div>);
 }
 
 export default App;
