@@ -10,9 +10,10 @@ import Login from './Login';
 import api from '../utils/Api.js';
 import React from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
-import {Routes, Route, Navigate} from "react-router-dom";
+import {Routes, Route, Navigate, useNavigate} from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Register from "./Register";
+import * as auth from '../utils/Auth.js';
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -21,7 +22,10 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
-  const [isAuth, setAuth] = React.useState(true);
+  const [isSignIn, setSignIn] = React.useState(false);
+  const [email, setEmail] = React.useState('');
+  const [isPopupOpen, setPopupOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -36,6 +40,21 @@ function App() {
       })
       .catch(e => console.error(e));
   }, []);
+  // Abracadabra@13.ru
+  React.useEffect(() => {
+    const token = localStorage.getItem('JWT');
+    if (!token) return;
+    auth.getUserByToken({token})
+      .then((resp) => {
+        const {email} = resp;
+        setEmail(email);
+        setSignIn(true);
+        navigate("/");
+      })
+      .catch(() => {
+        localStorage.removeItem('JWT');
+      })
+  }, [isSignIn])
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -53,6 +72,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setPopupOpen(false);
     setSelectedCard(null);
   }
 
@@ -105,14 +125,59 @@ function App() {
       .catch(e => console.error(e));
   }
 
+  function handleSignUp({password, email}) {
+    auth.signUp({password, email})
+      .then(() => {
+        navigate('/sign-in');
+      })
+      .catch((e) => {
+        if (e === 'Bad Request') {
+          setPopupOpen(true);
+        }
+      })
+  }
+
+  function handleSignIn({password, email}) {
+    auth.signIn({password, email})
+      .then((resp) => {
+        const {token} = resp;
+        setEmail(email);
+        localStorage.setItem('JWT', token);
+        setSignIn(true);
+        navigate('/');
+      })
+      .catch((e) => {
+        if (e === 'Bad Request') {
+          setPopupOpen(true);
+        }
+      })
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('JWT');
+    setSignIn(false);
+  }
+
   return (<div className="App">
     <div className="page">
-      <Header/>
+      <Header email={email} onLogout={handleLogout}/>
       <Routes>
         <Route path='/mesto-react' element={<Navigate to="/sign-in" replace/>}/>
-        <Route path="/sign-up" element={<Register/>}/>
-        <Route path="/sign-in" element={<Login/>}/>
-        <Route path="/" element={<ProtectedRoute loggedIn={true}/>}>
+        <Route path="/sign-up" element={
+          <Register
+            onSignUp={handleSignUp}
+            onClosePopup={closeAllPopups}
+            isPopupOpen={isPopupOpen}
+          />
+        }/>
+        <Route path="/sign-in" element={
+          <Login
+            onSignIn={handleSignIn}
+            onClosePopup={closeAllPopups}
+            isPopupOpen={isPopupOpen}
+          />
+        }/>
+        <Route path="/" element={<ProtectedRoute loggedIn={isSignIn}/>}>
           <Route index element={<>
             <CurrentUserContext.Provider value={currentUser}>
               <Main

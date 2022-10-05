@@ -1,4 +1,4 @@
-const BASE_URL = 's';
+const BASE_URL = 'https://auth.nomoreparties.co';
 
 /**
  * @return {Promise<Response>}
@@ -9,20 +9,20 @@ const BASE_URL = 's';
  *     }
  * }
  */
-const signUp = ({password, email}) => {
+export const signUp = ({password, email}) => {
   return request({
     method: 'POST',
-    endpoint: '/url/signup',
+    endpoint: '/signup',
     data: {password, email}
   })
 };
 
 
 /** @return {Promise<Response>} {"token" : "qwe.asd.zxc"} */
-const signIn = ({password, email}) => {
+export const signIn = ({password, email}) => {
   return request({
     method: 'POST',
-    endpoint: '/url/signin',
+    endpoint: '/signin',
     data: {password, email}
   })
 };
@@ -34,10 +34,10 @@ const signIn = ({password, email}) => {
  * 	"email":"email@ya.ru"
  * }
  */
-const getUserByToken = ({token}) => {
+export const getUserByToken = ({token}) => {
   return request({
     method: 'GET',
-    endpoint: 'url/users/me',
+    endpoint: '/users/me',
     token: token
   })
 };

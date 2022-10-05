@@ -1,11 +1,12 @@
-.auth-form__title {
+.popup__notify-title {
+  color: #000000;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
   text-align: center;
-  color: #FFFFFF;
-  margin: 60px 0 50px;
-  cursor: default;
+
+  margin: 32px 0 23px;
+  padding: 0;
 }

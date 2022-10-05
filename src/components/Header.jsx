@@ -2,11 +2,7 @@ import logo from '../images/logo.svg';
 import {Link, Route, Routes} from "react-router-dom";
 
 function Header(props) {
-  const {email} = {email: 'e'};
-
-  function handleLogout() {
-    console.log(123);
-  }
+  const {email, onLogout} = props;
 
   return (
     <header className="header">
@@ -23,7 +19,7 @@ function Header(props) {
         <Route path="/" element={
           <div className="header__profile-menu">
             {email && <p className="header__profile-email">{email}</p>}
-            <Link to="/sign-in" className="header__auth-link" onClick={handleLogout}>Выйти</Link>
+            <Link to="/sign-in" className="header__auth-link" onClick={onLogout}>Выйти</Link>
           </div>
         }/>
       </Routes>

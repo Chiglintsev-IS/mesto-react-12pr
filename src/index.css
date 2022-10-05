@@ -47,3 +47,5 @@
 @import url('blocks/auth-form/__root/auth-form__root.css');
 @import url('blocks/auth-form/__submit-button/auth-form__submit-button.css');
 @import url('blocks/auth-form/__title/auth-form__title.css');
+@import url('blocks/popup/__notify-image/popup__notify-image.css');
+@import url('blocks/popup/__notify-title/popup__notify-title.css');

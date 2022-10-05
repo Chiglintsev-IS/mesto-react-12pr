@@ -1,0 +1,8 @@
+.popup__notify-image {
+  width: 120px;
+  height: 120px;
+  border: none;
+  display: block;
+  align-self: center;
+  margin-top: 26px;
+}
